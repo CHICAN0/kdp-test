@@ -1,0 +1,621 @@
+<html style="max-width: 770px; min-width: 770px">
+
+<head> </head>
+
+<body style="margin: 0; max-width: 770px; min-width: 770px; height: 591px">
+    <div style="max-width: 770px; min-width: 770px; height: 591px">
+        <div class="top">
+            <div class="logo"><img src="/assets/images/kdspy-5-logo-sml.png" /></div>
+            <div class="recently-updated">
+                <div>
+                    Your extension was recently updated to v<span class="extension-version"></span>.
+                    <a href="#" id="learn-whats-new-link">Learn what's new</a>
+                </div>
+                <div id="close-recently-updated">&#x2715;</div>
+            </div>
+            <div class="top-buttons">
+                <div class="top-button" id="options-button">
+                    <img src="/assets/images/options.png" /><span>Options</span>
+                </div>
+                <div class="top-button" id="logout-button">
+                    <img src="/assets/images/logout-v5.png" /><span>Logout</span>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="left-panel panel">
+                <div class="header" id="main-header">
+                    <div style="float: left; font-size: 14px; padding-left: 11px" id="CategoryKind">
+                        Best Sellers in
+                    </div>
+                    <div style="float: left; font-size: 14px; padding-left: 6px; font-weight: bold" id="title">
+                        Kindle eBooks:
+                    </div>
+                    <div style="float: right">
+                        <a id="BestSellerLink" href="#">Best Sellers</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <span id="KeywordAnalysisMenu"><a id="KeywordAnalysis"
+                                href="#">Analysis</a>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                        <span id="InsightsLinkWrapper"><a id="InsightsLink" class="disabled" href="#">Insights</a>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                        <a id="TitleWordCloud" href="#">Word Cloud (20)</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a id="RankTrackingResultList" href="#">Book Tracking (' + rankTrackingNum + ')</a>
+                    </div>
+                </div>
+                <div class="header" id="tracking-header" style="display: none">
+                    <div style="float: left; font-size: 14px; padding-left: 11px">
+                        <b>Book Title: </b><span id="bookTitle"></span>
+                    </div>
+                </div>
+                <div class="info list_books">
+                    <div class="info-item">
+                        <span style="font-size: 11px">Results:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="result1">1-20</div>
+                    </div>
+                    <div class="info-item">
+                        <span style="font-size: 11px">Avg. Sales Rank:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="result2">2,233</div>
+                    </div>
+                    <div class="info-item">
+                        <span style="font-size: 11px">Avg. Sales Rev:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="result3">
+                            $7,000.00
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span style="font-size: 11px">Avg. Price:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="result4">$7.95</div>
+                    </div>
+                    <div class="info-item">
+                        <span style="font-size: 11px">Avg. No. Reviews:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="result5">31</div>
+                    </div>
+                </div>
+                <div class="info single_book" style="display: none">
+                    <div class="info-item">
+                        <span style="font-size: 11px">Sales Rank:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="singleResult1">0</div>
+                    </div>
+                    <div class="info-item">
+                        <span style="font-size: 11px">Price:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="singleResult2">0</div>
+                    </div>
+                    <div class="info-item">
+                        <span style="font-size: 11px">Est. Mo. Sales:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="singleResult4">0</div>
+                    </div>
+                    <div class="info-item" style="width: 20%">
+                        <span style="font-size: 11px">Est. Mo. Rev:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="singleResult5">0</div>
+                    </div>
+                    <div class="info-item">
+                        <span style="font-size: 11px">No Reviews:</span>
+                        <div style="font-size: 16px; font-weight: bold; margin-top: -6px" id="singleResult6">0</div>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+                <div class="table-head">
+                    <label style="padding-left: 6px" class="sort-column" id="no">#</label>
+                    <label style="padding-left: 4px" class="sort-column" id="title-book">Book Title</label>
+                    <label class="sort-column" id="publication-date" style="padding-right: 8px"></label>
+                    <label style="padding-left: 285px" class="sort-column" id="price">Price</label>
+                    <label style="padding-left: 12px" class="sort-column" id="est-sales">Est.Sales</label>
+                    <label style="padding-left: 15px" class="sort-column" id="sales-rev">Sales Rev.</label>
+                    <label style="padding-left: 22px" class="sort-column" id="reviews">Reviews</label>
+                    <label style="padding-left: 15px" class="sort-column" id="sales-rank">Sales Rank</label>
+                </div>
+                <div class="content" id="main-content">
+                    <table class="data" name="data">
+                        <tbody id="data-body"></tbody>
+                    </table>
+                </div>
+                <div class="tabs" id="main-tabs">
+                    <div class="tabs-item tabs-item--active data-key-book" data-key="book">Books</div>
+                    <div class="tabs-item data-key-audiobook" data-key="audiobook">Audiobooks</div>
+                    <div class="tabs-item data-key-kindle" data-key="kindle">Kindle</div>
+                </div>
+                <div class="content" id="loading-content">
+                    <div><img style="display: block; margin: 0 auto" src="/assets/images/loading.gif" /></div>
+                </div>
+                <div id="content-keyword-search">
+                    <div class="loading">
+                        <img style="display: block; margin: 0 auto" src="/assets/images/loading.gif" />
+                    </div>
+                    <div class="content" style="padding-top: 30px; padding-left: 7px">
+                        <table class="data-keyword-search" name="data-keyword-search" style="table-layout: fixed">
+                            <thead class="table-head-keyword-search" style="display: none">
+                                <tr>
+                                    <th style="width: 25px; text-align: right" class="sort-column" id="no-kw">#</th>
+                                    <th style="width: 255px; padding-left: 5px">Keyword Suggestions</th>
+                                    <th style="width: 75px; padding-left: 5px">Competitors</th>
+                                    <th style="width: 85px; padding-left: 15px">Avg. Mo. Rev</th>
+                                    <th style="width: 80px; padding-left: 5px">Competition</th>
+                                    <th style="width: 110px; padding-right: 20px; text-align: right">
+                                        Full Results
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="data-body-keyword-search"></tbody>
+                        </table>
+                    </div>
+                    <div class="no-data-found-content">
+                        <div>
+                            <div style="width: 70%; margin: 0 auto; line-height: 25px; font-size: 25px">
+                                <br /><br />
+                                <b style="font-size: 30px; margin-left: 90px">oops, please try another!</b>
+                                <br /><br />Your keyword search yielded ZERO results for Kindle. Please try a more
+                                general search term.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs" id="keyword-search-tabs">
+                    <div class="tabs-item tabs-item--active data-key-book" data-key="book">Books</div>
+                    <div class="tabs-item data-key-kindle" data-key="kindle">Kindle</div>
+                    <div class="tabs-item tabs-item--active data-key-audiobook" data-key="audiobook">
+                        Audiobooks
+                    </div>
+                </div>
+                <div class="img-load"><img src="/assets/images/3-dot-load.gif" /></div>
+                <div class="content" id="tracking-content" style="display: none"></div>
+                <div class="content" id="word-cloud-content" style="display: none"></div>
+                <div id="insights-content" style="display: none">
+                    <div class="intro-screen">
+                        <h1>ChatGPT (AI) Niche & Genre Insights</h1>
+                        <div class="prompts-wrapper">
+                            <img src="/assets/images/chatgpt.png" alt="ChatGPT" class="icon">
+                            <div class="spacer-vertical"></div>
+                            <div class="prompts-section">
+                                <h2>Prompts</h2>
+                                <div class="prompts-list">
+
+                                </div>
+                                <a class="learn-more-link" href="https://www.kdspy.com/help/#chatgpt" target="_blank">Learn more about AI insights ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content container-login" id="login-content">
+                    <div class="wrap-login">
+                        <div class="login-form validate-form">
+                            <div class="login-form-title">
+                                <img src="/assets/images/publishing-logo.png" class="publishing-logo" />
+                                <p>Please enter your Publishing Altitude account details below:</p>
+                            </div>
+                            <div class="wrap-input validate-input" data-validate="Username is required">
+                                <input id="username" class="input" type="text" name="username" placeholder="Username" />
+                                <span class="focus-input"></span>
+                            </div>
+                            <div class="wrap-input validate-input" data-validate="Password is required">
+                                <input id="password" class="input" type="password" name="pass" placeholder="Password" />
+                                <span class="focus-input"></span>
+                            </div>
+                            <div class="container-login-form-btn">
+                                <button id="login-button" class="login-form-btn">LOGIN</button>
+                            </div>
+                            <div class="flex-center-m">
+                                <div class="reset-pass">
+                                    <a href="#" id="create-account"> Create an account </a>
+                                    |
+                                    <a href="#" id="reset-password"> Forgot password </a>
+                                    |
+                                    <a href="#" id="privacy-policy"> Privacy Policy </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-block centered">
+                        <p id="login-failed-message" class="hidden validation-error">
+                            Login failed. Please check your username/password and try again.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content" id="trial-expired-content">
+                    <div class="centered full-width">
+                        <img alt="expired" src="/assets/images/forbidden.png" />
+                        <h1 id="expired-text">YOUR TRIAL HAS EXPIRED!</h1>
+                        <h1 id="cancelled-text">YOUR ACCOUNT IS INACTIVE</h1>
+                        <p>Activate KDSPY for JUST $69 (one-time fee). Unlimited Use.</p>
+                        <div class="container-btn">
+                            <button id="unlock-account-button" class="login-form-btn">ACTIVATE NOW &gt;</button>
+                            <button id="unlock-cancelled-account-button" class="login-form-btn">
+                                ACTIVATE NOW &gt;
+                            </button>
+                        </div>
+                        <a href="#" id="learn-more-about-kdspy" class="black">Or, learn more about KDSPY here &gt;</a>
+                    </div>
+                </div>
+                <div class="content" id="no-data-found-content">
+                    <div class="centered full-width">
+                        <img alt="expired" src="/assets/images/error-oops.png" />
+                        <h1>NO DATA FOUND</h1>
+                        <p>
+                            Please report this error to our support desk. First, copy the URL above in your address
+                            bar, then click below...
+                        </p>
+                        <div class="container-btn">
+                            <button id="no-data-button" class="login-form-btn">
+                                REPORT TO OUR SUPPORT DESK HERE >
+                            </button>
+                        </div>
+                        <a href="#" id="learn-more-about-no-data" class="black">Or, learn more about this error &gt;</a>
+                    </div>
+                </div>
+                <div class="content" id="no-tracked-books">
+                    <div class="centered full-width">
+                        <img alt="expired" src="/assets/images/error-oops.png" />
+                        <h1>NO TRACKED BOOKS FOUND</h1>
+                        <p>You're not currently tracking any books.</p>
+                        <div class="container-btn">
+                            <button id="no-tracked-books-button" class="login-form-btn">
+                                RETURN TO PREVIOUS RESULTS>
+                            </button>
+                        </div>
+                        <a href="#" id="learn-more-about-book-tracking" class="black">Or, learn how book tracking works
+                            &gt;</a>
+                    </div>
+                </div>
+                <div class="content" id="no-supported-area">
+                    <div class="centered full-width">
+                        <img alt="expired" src="/assets/images/error-oops.png" />
+                        <h1>LOCATION NOT COMPATIBLE</h1>
+                        <p>You're currently navigating an incompatible area on Amazon.</p>
+                        <div class="container-btn">
+                            <button id="no-support-button" class="login-form-btn">
+                                RETURN TO KINDLE BESTSELLERS>
+                            </button>
+                        </div>
+                        <a href="#" id="learn-more-about-no-support" class="black">Or, learn more about this error
+                            &gt;</a>
+                    </div>
+                </div>
+                <div class="content" id="no-supported-type">
+                    <div class="centered full-width">
+                        <img alt="expired" src="/assets/images/error-oops.png" />
+                        <h1>NO BOOK TYPE SELECTED</h1>
+                        <p>
+                            The book type cannot be ALL. You must choose either Kindle or Books from the dropdown
+                            box on Amazon.
+                        </p>
+                        <div class="container-btn">
+                            <button id="no-support-type-button" class="login-form-btn">
+                                Alternatively, search for Keywords suggestions here >
+                            </button>
+                        </div>
+                        <a href="#" id="learn-more-about-no-support-type" class="black">Or, learn more about this error
+                            &gt;</a>
+                    </div>
+                </div>
+                <div class="content" id="no-supported-language">
+                    <div class="centered full-width">
+                        <img alt="expired" src="/assets/images/error-oops.png" />
+                        <h1>LANGUAGE TRANSLATION DETECTED</h1>
+                        <p>
+                            Please click below to switch back to native language for KDSPY to function in this
+                            location. If this keeps happening &#8211; add this language to your browser's settings.
+                        </p>
+                        <div class="container-btn">
+                            <button id="no-language-button" class="login-form-btn">SWITCH LANGUAGE</button>
+                        </div>
+                        <!--                        <a href="#" id="learn-more-about-no-support" class="black">Or, learn more about this error &gt;</a>-->
+                    </div>
+                </div>
+                <div class="content" id="no-supported-logged-in">
+                    <div class="centered full-width">
+                        <img alt="expired" src="/assets/images/error-oops.png" />
+                        <h1>PLEASE LOG OUT OF AMAZON</h1>
+                        <p>
+                            Due to account personalisation of book prices, and therefore to ensure data accuracy
+                            within KDSPY, we kindly ask you to log out of your Amazon account when using KDSPY.
+                        </p>
+                        <div class="container-btn">
+                            <button id="no-logged-in-button" class="login-form-btn">CONTINUE ANYWAY ></button>
+                        </div>
+                        <div class="remember-logout-choice-wrapper">
+                            <input type="checkbox" id="rememberLogoutChoice" />
+                            <label for="rememberLogoutChoice">I understand the above, but no longer want to see this
+                                notification again</label>
+                        </div>
+                        <a href="#" id="learn-more-about-no-logged-in" class="black">Or, learn more about this error
+                            &gt;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right-panel panel" style="width: 225px; display: none">
+                <div id="sidebar">
+                    <div>
+                        <img id="bookImage" src="" />
+                    </div>
+                    <div style="text-align: center; margin-top: 5px">
+                        <div class="bookProps">
+                            <div class="bookProps-item">
+                                <div class="bookProps-caption">Date Published:</div>
+                                <div class="bookProps-content data-publication-date"></div>
+                            </div>
+                            <div class="bookProps-item">
+                                <div class="bookProps-caption">Length:</div>
+                                <div class="bookProps-content data-print-length"></div>
+                            </div>
+                            <div class="bookProps-item">
+                                <div class="bookProps-caption">More:</div>
+                                <div class="bookProps-content">
+                                    <a href="#" target="_blank" class="bookProps-url data-cover-search-url">Cover
+                                        Search</a>
+                                    <span>|</span>
+                                    <a href="#" target="_blank" class="bookProps-url data-google-search-url">Title
+                                        Search</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tabs" id="tracking-tabs"></div>
+            <div class="tabs" id="global-tracking-tabs"></div>
+        </div>
+        <div class="space-filler"></div>
+        <div class="footer">
+            <div id="SearchPanelFooter" style="width: 100%; display: none">
+                <div style="float: left; width: 140px; margin-top: 22px">
+                    <div style="display: table; text-align: center">
+                        <a href="#" style="margin-left: 20px" id="PullAZResult">Pull Results A-Z</a>
+                    </div>
+                </div>
+                <div id="ExportSearchBtn" book-url="" style="float: left; width: 70px; border-right: 1px solid #999999">
+                    <div class="footer-btn-panel-common">
+                        <div class="footer-btn-panel-text">Export</div>
+                        <div><img src="/assets/images/download.png" class="Export" /></div>
+                    </div>
+                </div>
+            </div>
+            <div id="TrackedPanelFooter" style="width: 100%; display: none">
+                <div style="float: left; width: 15%; margin-top: 22px; padding-right: 20px" id="LinkBack">
+                    <a id="LinkBackTo" style="float: right" href="#">
+                        &lt;&lt; Back to results</a>
+                </div>
+                <div id="BookTracked">
+                    <div style="
+                                float: left;
+                                width: 7%;
+                                padding-top: 10px;
+                                border-left: 1px solid #999999;
+                                padding-bottom: 14px;
+                                height: 35px;
+                            ">
+                        <div style="margin: 0 auto; display: table; padding-top: 5px">
+                            <span style="font-size: 11px">Days:</span>
+                            <div style="font-size: 16px; font-weight: bold" id="days">0</div>
+                        </div>
+                    </div>
+                    <div style="
+                                float: left;
+                                width: 13%;
+                                padding-top: 10px;
+                                border-left: 1px solid #999999;
+                                padding-bottom: 14px;
+                                height: 35px;
+                            ">
+                        <div style="margin: 0 auto; display: table; padding-top: 5px">
+                            <span style="font-size: 11px">Avg.Sales Rank:</span>
+                            <div style="font-size: 16px; font-weight: bold" id="AvgSalesRank">0</div>
+                        </div>
+                    </div>
+                    <div style="
+                                float: left;
+                                width: 14%;
+                                padding-top: 10px;
+                                border-left: 1px solid #999999;
+                                padding-bottom: 14px;
+                                height: 35px;
+                            ">
+                        <div style="margin: 0 auto; display: table; padding-top: 5px">
+                            <span style="font-size: 11px">Est.Daily Rev.:</span>
+                            <div style="font-size: 16px; font-weight: bold" id="EstDailyRev">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="InsightsFooter">
+                <div style="margin-top: 22px; float: left;">
+                    <a href="#" style="margin-left: 20px" id="SingleAiInsightsBack">&lt; Back to book details</a>
+                </div>
+            </div>
+            <div id="BestSellersRankingFooter">
+                <div style="float: left; width: 140px; margin-top: 22px">
+                    <div style="display: flex; justify-content: center; align-items: center">
+                        <a href="#" id="PullResult">Pull Results 1-20</a>
+                        <img style="width: 28px;" src="/assets/images/3-dot-load.gif" id="PullResultLoading">
+                    </div>
+                </div>
+                <div class="search-btn">
+                    <div class="footer-btn-panel-common" style="border-right: 0px solid #999999">
+                        <div class="footer-btn-panel-text">Keywords</div>
+                        <div><img src="/assets/images/search-ico.png" class="search" /></div>
+                    </div>
+                </div>
+                <div id="ExportBtn" book-url="" style="float: left; width: 70px">
+                    <div class="footer-btn-panel-common">
+                        <div class="footer-btn-panel-text">Export</div>
+                        <div><img src="/assets/images/download.png" class="Export" /></div>
+                    </div>
+                </div>
+                <div class="help-btn">
+                    <div class="footer-btn-panel-common" style="border-right: 1px solid #999999">
+                        <div class="footer-btn-panel-text">Help</div>
+                        <div>
+                            <img src="/assets/images/help.png" class="help" />
+                        </div>
+                    </div>
+                </div>
+                <div class="region-select-wrapper">
+                    <select id="regionSelector" class="target">
+                        <option value="USA" selected="selected">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="DE">DE</option>
+                        <option value="FR">FR</option>
+                        <option value="CA">CA</option>
+                        <option value="IT">IT</option>
+                        <option value="ES">ES</option>
+                        <option value="IN">IN</option>
+                        <option value="JP">JP</option>
+                        <option value="AU">AU</option>
+                        <option value="BR">BR</option>
+                        <option value="MX">MX</option>
+                    </select>
+                    <span>Region</span>
+                </div>
+                <div id="totalReSalesRecvBlock"
+                    style="float: left; width: 153px; border-left: 1px solid #999999; height: 59px">
+                    <div style="margin: 12px auto; display: table; text-align: center; padding-top: 5px">
+                        <span style="font-size: 11px; color: #666666">Total Monthly Rev.</span>
+                        <div style="font-size: 16px; font-weight: bold" id="totalReSalesRecv">$97,000.00</div>
+                    </div>
+                </div>
+                <div id="Conclusion" style="
+                            float: left;
+                            width: 177px;
+                            padding-top: 10px;
+                            border-left: 1px solid #999999;
+                            min-height: 49px;
+                        ">
+                    <div class="status" style="margin-left: 10px">
+                        <div class="status-text">Popularity</div>
+                        <div class="status-img">
+                            <div class="bullet-progress"></div>
+                            <div id="bullet-1" style="display: none"></div>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <div class="status-text">Potential</div>
+                        <div class="status-img">
+                            <div class="bullet-progress"></div>
+                            <div id="bullet-2" style="display: none"></div>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <div class="status-text">Competition</div>
+                        <div class="status-img">
+                            <div class="bullet-progress"></div>
+                            <div id="bullet-3" style="display: none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="WordCloudFooter" style="display: none">
+                <div style="float: left; margin-top: 5px">
+                    <div style="padding-left: 20px">
+                        <div style="margin: 0 auto; text-align: left; padding-top: 5px">
+                            <span style="font-size: 12px">Top 5 Words Used in Best Seller Titles:</span>
+                        </div>
+                        <br />
+                        <span id="Words"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="NoDataFooter" style="display: none">
+                <div style="float: left; width: 65%; margin-top: 5px"></div>
+            </div>
+            <div id="no-compatible-aria-footer" style="display: none; margin-left: 376px">
+                <div class="search-btn">
+                    <div class="footer-btn-panel-common" style="border-right: 0px solid #999999">
+                        <div class="footer-btn-panel-text">Search</div>
+                        <div>
+                            <img src="/assets/images/search-ico.png" class="search" />
+                        </div>
+                    </div>
+                </div>
+                <div style="float: left; width: 70px">
+                    <div class="footer-btn-panel-common" style="padding: 0 10px">
+                        <div class="footer-btn-panel-text">Categories</div>
+                        <div style="text-align: right">
+                            <img src="/assets/images/category.png" style="height: 35px; width: 35px"
+                                id="go-categories" />
+                        </div>
+                    </div>
+                </div>
+                <div class="help-btn">
+                    <div class="footer-btn-panel-common">
+                        <div class="footer-btn-panel-text">Help</div>
+                        <div>
+                            <img src="/assets/images/help.png" class="help" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="AdPanel" style="
+                        float: right;
+                        width: 177px;
+                        border-left: 1px solid #999999;
+                        min-height: 59px;
+                        overflow: hidden;
+                    ">
+                <div style="margin: 0 auto; display: table; text-align: center; padding-top: 5px">
+                    <div id="ad"></div>
+                </div>
+            </div>
+            <div id="TrackingExportImport" style="float: right">
+                <div id="ExportTrackingBtn" style="float: left; width: 70px; display: block">
+                    <div class="footer-btn-panel-common">
+                        <div class="footer-btn-panel-text">Export</div>
+                        <div>
+                            <img src="/assets/images/download.png" id="ExportTracking" />
+                        </div>
+                    </div>
+                </div>
+                <div id="ImportTrackingBtn" style="float: left; width: 70px; display: block">
+                    <div class="footer-btn-panel-common">
+                        <div class="footer-btn-panel-text">Import</div>
+                        <div>
+                            <img src="/assets/images/upload.png" id="ImportTracking" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="ExportBtnWordCloud" book-url="" style="float: right; width: 70px">
+                <div class="footer-btn-panel-common">
+                    <div class="footer-btn-panel-text">Export</div>
+                    <div><img src="/assets/images/download.png" class="Export" /></div>
+                </div>
+            </div>
+            <div id="BackToTrackingList" style="float: right; width: 70px">
+                <div class="footer-btn-panel-common">
+                    <div class="footer-btn-panel-text">Tracking</div>
+                    <div><img src="/assets/images/tracking.png" class="BackToTrackingList" /></div>
+                </div>
+            </div>
+            <div id="SingleAiInsights" style="float: right; width: 70px">
+                <div class="footer-btn-panel-common">
+                    <div class="footer-btn-panel-text">Insights</div>
+                    <div><img src="/assets/images/chatgpt-gs.png" class="SingleAiInsights" /></div>
+                </div>
+            </div>
+            <!-- <div class="footer-btn-right help-btn" id="GlobalHelpButton">
+                <div class="footer-btn-panel-common">
+                    <div class="footer-btn-panel-text">Help</div>
+                    <div class="image-frame" style="margin-top:4px;">
+                        <span class="image-frame-helper"></span>
+                        <img src="/assets/images/help.png" class="help">
+                    </div>
+                </div>
+            </div> -->
+            <div id="login-footer">
+                <div class="footer-btn-right help-btn">
+                    <div class="footer-btn-panel-common">
+                        <div class="footer-btn-panel-text">Help</div>
+                        <div class="image-frame">
+                            <span class="image-frame-helper"></span>
+                            <img src="/assets/images/help.png" class="help" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/libs/other.js" language="javascript" charset="utf-8"></script>
+    <script src="/libs/ui.js" language="javascript" charset="utf-8"></script>
+    <script src="popup.js" language="javascript" charset="utf-8"></script>
+</body>
+
+</html>

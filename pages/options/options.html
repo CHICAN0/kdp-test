@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>KDSPY options</title>
+    </head>
+    <body>
+        <main>
+            <img src="/assets/images/kdspy-5-logo-sml.png" alt="KDSPY logo" class="logo" />
+            <div class="inner-box">
+                <div class="option">
+                    <div class="title"><strong>My primary region:</strong></div>
+                    <div class="control">
+                        <select id="regionSelector">
+                            <option value="USA" selected="selected">USA</option>
+                            <option value="UK">UK</option>
+                            <option value="DE">DE</option>
+                            <option value="FR">FR</option>
+                            <option value="CA">CA</option>
+                            <option value="IT">IT</option>
+                            <option value="ES">ES</option>
+                            <option value="IN">IN</option>
+                            <option value="JP">JP</option>
+                            <option value="AU">AU</option>
+                            <option value="BR">BR</option>
+                            <option value="MX">MX</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="title"><strong>My primary location:</strong></div>
+                    <div class="control radio-group radio-group-location">
+                        <div class="radio">
+                            <input type="radio" id="locationKindle" name="location" value="kindle" />
+                            <label for="locationKindle">Kindle</label>
+                        </div>
+
+                        <div class="radio">
+                            <input type="radio" id="locationBooks" name="location" value="books" />
+                            <label for="locationBooks">Books</label>
+                        </div>
+
+                        <div class="radio">
+                            <input type="radio" id="locationAudiobooks" name="location" value="audiobooks" />
+                            <label for="locationAudiobooks"
+                                >Audiobooks
+                                <span class="audiobooks-not-supported">(not supported by selected store)</span></label
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="button primary" id="save">Save</div>
+                    <div class="button" id="reset">Reset</div>
+                    <div class="button show-in-popup-only" id="back">↩ Back to app</div>
+                </div>
+                <div class="hr"></div>
+                <div class="option">
+                    <div class="title">Clear cache & cookies:</div>
+                    <div class="control radio-group">
+                        <div class="radio">
+                            <input type="radio" id="cachePartial" name="cache" value="partial" checked />
+                            <label for="cachePartial">Partial</label>
+                        </div>
+
+                        <div class="radio">
+                            <input type="radio" id="cacheAll" name="cache" value="all" />
+                            <label for="cacheAll">All</label>
+                        </div>
+                    </div>
+                    <div class="extra-control button" id="clearCache">Go</div>
+                </div>
+                <div class="hr"></div>
+                <div class="footer">
+                    <div>Copyright 2014 — 2022 © LeadsClick LTD.</div>
+                    <a target="_blank" href="https://www.kdspy.com/c/legal-notices/#privacy">Privacy Policy</a>
+                </div>
+            </div>
+        </main>
+        <script src="/libs/other.js" language="javascript" charset="utf-8"></script>
+        <script src="/libs/ui.js" language="javascript" charset="utf-8"></script>
+        <script src="options.js" language="javascript" charset="utf-8"></script>
+    </body>
+</html>

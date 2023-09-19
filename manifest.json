@@ -1,0 +1,79 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "name": "KDSPY – Keyword Research for Authors",
+    "description": "KDSPY is a time-saving book research companion that every author – fiction or non-fiction – should have in their toolbox.",
+    "version": "5.12.7",
+    "manifest_version": 3,
+    "icons": {
+        "16": "assets/images/zoom-16.png",
+        "48": "assets/images/zoom-48.png",
+        "128": "assets/images/zoom-128.png"
+    },
+    "action": {
+        "default_icon": {
+            "19": "assets/images/zoom-19.png",
+            "38": "assets/images/zoom-38.png"
+        },
+        "default_title": "KDSPY",
+        "default_popup": "/pages/popup/popup.html"
+    },
+    "background": {
+        "service_worker": "background-wrapper.js"
+    },
+    "options_ui": {
+        "page": "/pages/options/options.html",
+        "browser_style": false
+    },
+    "permissions": [
+        "storage",
+        "alarms",
+        "scripting"
+    ],
+    "host_permissions": [
+        "*://*.publishingaltitude.com/*",
+        "*://*.google.com/*",
+        "*://*.amazon.com/*",
+        "*://*.amazon.co.uk/*",
+        "*://*.amazon.de/*",
+        "*://*.amazon.fr/*",
+        "*://*.amazon.ca/*",
+        "*://*.amazon.it/*",
+        "*://*.amazon.es/*",
+        "*://*.amazon.in/*",
+        "*://*.amazon.co.jp/*",
+        "*://*.amazon.com.au/*",
+        "*://*.amazon.com.br/*",
+        "*://*.amazon.com.mx/*"
+    ],
+    "optional_permissions": [
+        "browsingData"
+    ],
+    "optional_host_permissions": [
+        "https://chat.openai.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.amazon.com/*",
+                "*://*.amazon.co.uk/*",
+                "*://*.amazon.de/*",
+                "*://*.amazon.fr/*",
+                "*://*.amazon.ca/*",
+                "*://*.amazon.it/*",
+                "*://*.amazon.es/*",
+                "*://*.amazon.in/*",
+                "*://*.amazon.co.jp/*",
+                "*://*.amazon.com.au/*",
+                "*://*.amazon.com.br/*",
+                "*://*.amazon.com.mx/*"
+            ],
+            "run_at": "document_start",
+            "js": [
+                "/libs/ui.js",
+                "/libs/other.js",
+                "/contentscripts/pageScript.js"
+            ]
+        }
+    ]
+}
